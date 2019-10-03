@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+  }
+
+mat-paginator {
+    width: 100%;
+}
+
+.example-button {
+    margin-top: 16px;
+  }
+  
+.tooltip-red {
+    background: #b71c1c;
+}
+
+.tooltip-blue {
+    background: #3e10e4;
+}
+
+.btn-agregar{
+    background-color: #3e8450;
+    color: white;
+}

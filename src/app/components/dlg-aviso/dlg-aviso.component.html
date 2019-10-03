@@ -1,0 +1,11 @@
+<div>
+    <h2 mat-dialog-title>{{titulo}}</h2>
+    <hr>
+    <mat-dialog-content>
+        <strong [innerHTML]=texto></strong>
+    </mat-dialog-content>
+    <hr>
+    <mat-dialog-actions>
+      <button mat-raised-button (click)="cerrar()">Cerrar</button>
+    </mat-dialog-actions>
+  </div>

@@ -1,0 +1,27 @@
+<div class="mat-elevation-z8" style="margin-left: 5%; margin-right: 5%; background-color: #ffffff; margin-top: 50px;">
+    <div style="background-color: #3f51b5; padding: 5px; text-align: center;">
+        <h6 mat-dialog-title style="color: white; margin-bottom: 0px;">{{titulo}}</h6>
+    </div>
+    <div class="mod-container" style="margin-top: 20px; padding-bottom: 20px;">
+      <mat-form-field style="margin-bottom: 20px;">
+        <input matInput placeholder="Nombre de la editorial" [(ngModel)]=editorial #nombre>
+      </mat-form-field>
+      <mat-checkbox style="margin-bottom: 20px;" color="primary"
+      [(ngModel)]=habilitada >Habilitada</mat-checkbox>
+    </div>
+</div>
+<div style="text-align: center; margin-top: 20px;">
+    <button mat-raised-button class="btn-agregar" (click)="volver()">
+        <i class="fas fa-arrow-circle-left fa-1x" style="width: 20px; margin-right:10px;
+            font-size: 1.5em; cursor: pointer;"
+            ></i>
+        Volver
+    </button>
+    <button mat-raised-button class="btn-agregar" (click)="almacenarEditorial()"
+      style="margin-left: 30px;">
+        <i class="fas fa-save fa-1x" style="width: 20px; margin-right:10px;
+            font-size: 1.5em; cursor: pointer;"
+            ></i>
+        Almacenar
+    </button>
+</div>

@@ -1,0 +1,35 @@
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutAlign="space-around"
+     [style.margin-top]="'20px'" [style.margin-left]="'20px'">
+     <mat-card class="example-card" fxFlex="30%" (click)="clickAutores()">
+        <mat-card-header>
+        
+            <div mat-card-avatar class="autores-header-image"></div>
+            <mat-card-title>Autores</mat-card-title>
+            <mat-card-subtitle>Desde esta opción se pueden administrar los autores del sistema</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class="example-card" fxFlex="30%" (click)="clickEditoriales()">
+        <mat-card-header>
+        
+            <div mat-card-avatar class="editoriales-header-image"></div>
+            <mat-card-title>Editoriales</mat-card-title>
+            <mat-card-subtitle>Desde esta opción se pueden administrar las editoriales del sistema</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class="example-card" fxFlex="30%">
+        <mat-card-header>
+            <div mat-card-avatar class="clientes-header-image"></div>
+            <mat-card-title>Clientes</mat-card-title>
+            <mat-card-subtitle>Desde esta opción se pueden administrar los clientes del sistema</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class="example-card" fxFlex="30%" (click)="clickLibros()">
+        <mat-card-header>
+            <div mat-card-avatar class="libros-header-image"></div>
+            <mat-card-title>Libros</mat-card-title>
+            <mat-card-subtitle>Desde esta opción se pueden administrar los libros del sistema</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>
+

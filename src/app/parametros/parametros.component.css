@@ -1,0 +1,29 @@
+p {
+    font-family: Lato;
+  }
+  
+  .example-card {
+    max-width: 300px;
+    margin: 4px;
+    cursor: pointer;
+  }
+  
+  .autores-header-image {
+    background-image: url("/assets/images/autores.png");
+    background-size: cover;
+  }
+
+  .editoriales-header-image {
+    background-image: url("/assets/images/editoriales.png");
+    background-size: cover;
+  }
+
+  .clientes-header-image {
+    background-image: url("/assets/images/clientes1.png");
+    background-size: cover;
+  }
+
+  .libros-header-image {
+    background-image: url("/assets/images/libros.png");
+    background-size: cover;
+  }

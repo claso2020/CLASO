@@ -1,0 +1,100 @@
+<div style="margin-left: 5%; margin-right: 5%; 
+  padding-right: 20px; margin-bottom: 30px; margin-top: 30px;">
+  <div style="background-color: #3f51b5; padding: 5px; text-align: center; margin-bottom: 20px;">
+      <h6 mat-dialog-title style="color: white; margin-bottom: 0px;">Libros</h6>
+  </div>
+  <button mat-raised-button class="btn-agregar" (click)="modificar('00000000-0000-0000-0000-000000000000')">
+      <i class="fas fa-plus-circle fa-1x" style="width: 20px; margin-right:10px;
+          font-size: 1.5em; cursor: pointer;"
+          ></i>
+      Agregar nuevo libro
+  </button>
+</div>
+<div class="mat-elevation-z8" style="margin-left: 5%; margin-right: 5%; padding-left: 20px;
+  padding-right: 20px; background-color: #ffffff" [hidden]="escondeTabla">
+    <mat-form-field style="width: 90%; margin-top: 10px; margin-right: 20px;">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+    </mat-form-field>
+    <button mat-raised-button class="btn-agregar" (click)="exportarAExcel()">
+        <i class="fas fa-file-excel fa-1x" style="width: 20px; margin-right:10px;
+            font-size: 1.5em; cursor: pointer;"
+        ></i>
+    </button>
+    <div #tablaLibros>
+      <table mat-table [dataSource]="dataSource" matSort #tablaLibros>
+    
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef style="width: 100px;" [hidden]="paraXLS">
+                Acciones
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <i class="fas fa-pen-square fa-1x" (click)="modificar(element.idLibro)" style="width: 20px; margin-right:0px;
+                  color: #0909f7; font-size: 1.5em; cursor: pointer;"
+                  mat-raised-button
+                  matTooltip="Modificar libro {{element.titulo}}"
+                  matTooltipPosition="right"
+                  matTooltipClass="tooltip-blue"
+                  ></i>
+                <i class="fas fa-trash-alt fa-1x" (click)="eliminar(element.idLibro)" style="width: 20px; margin-left:10px; 
+                  color: #bc0325; font-size: 1.4em; cursor: pointer"
+                  mat-raised-button
+                  matTooltip="Eliminar libro {{element.titulo}}"
+                  matTooltipPosition="right"
+                  matTooltipClass="tooltip-red"></i>
+            </td>
+        </ng-container>
+
+        <!-- Columna titulo -->
+        <ng-container matColumnDef="titulo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+          <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+        </ng-container>
+
+        <!-- Columna autor -->
+        <ng-container matColumnDef="autor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Autor </th>
+            <td mat-cell *matCellDef="let element"> {{element.autor}} </td>
+        </ng-container>
+
+        <!-- Columna editorial -->
+        <ng-container matColumnDef="editorial">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Editorial </th>
+            <td mat-cell *matCellDef="let element"> {{element.editorial}} </td>
+        </ng-container>
+
+        <!-- Columna habilitada -->
+        <ng-container matColumnDef="habilitado">
+          <th mat-header-cell *matHeaderCellDef style="width:10%; text-align:center;" mat-sort-header> Habilitado </th>
+          <td mat-cell *matCellDef="let element" style="text-align:center;"> 
+              <mat-checkbox [disabled]="true" [checked]="element.habilitado">
+                <div style="display: none;">
+                  <p *ngIf="element.habilitado==0">NO</p>
+                  <p *ngIf="element.habilitado==1">SI</p>
+                </div>
+              </mat-checkbox>
+          </td>
+        </ng-container>
+    
+        
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<div class="mat-elevation-z8" style="margin-left: 5%; margin-right: 5%; padding: 10px; background-color: #ffffff;
+  text-align: center;"
+  [hidden]="!escondeTabla">
+    <h4 style="color: #a31611;">Todavía no se agregó ningún libro al sistema</h4>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+  <button mat-raised-button class="btn-agregar" (click)="volver()">
+      <i class="fas fa-arrow-circle-left fa-1x" style="width: 20px; margin-right:10px;
+          font-size: 1.5em; cursor: pointer;"
+          ></i>
+      Volver
+  </button>
+</div>

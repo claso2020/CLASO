@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           }else{
             this.storage.set("token", data['token']);            
             this.storage.set("idConexion", data['idConexion']);
-            this.router.navigate(['/miperfil'])
+            this.router.navigate(['/inicio'])
           }
           this.cerrarDialogo(dlgTrabajando);
         },

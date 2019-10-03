@@ -1,0 +1,104 @@
+<div class="mat-elevation-z8" style="margin-left: 5%; margin-right: 5%; background-color: #ffffff; margin-top: 50px;">
+    <div style="background-color: #3f51b5; padding: 5px; text-align: center;">
+        <h6 mat-dialog-title style="color: white; margin-bottom: 0px;">{{titulo}}</h6>
+    </div>
+    <mat-tab-group>
+        <mat-tab label="General">
+            <div class="mod-container" style="margin-top: 20px; padding-bottom: 20px;">
+                <mat-form-field style="margin-bottom: 0px;">
+                    <input matInput placeholder="Titulo del libro" [(ngModel)]=tituloLibro #txtTitulo
+                    autocomplete="off">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Subtitulo del libro" [(ngModel)]=subTituloLibro 
+                    #txtSubTitulo autocomplete="off">
+                </mat-form-field>
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                    <mat-form-field style="margin-top: 0px; margin-bottom: -10px;">
+                        <input matInput placeholder="Editorial" [(ngModel)]=txtBuscEditorial
+                        (keydown.enter)="buscarEditorial()" autocomplete="off">
+                    </mat-form-field>
+                    <button mat-raised-button class="btn-agregar" (click)="buscarEditorial()"
+                        style="margin-left: 30px; height: 40px;">
+                        <i class="fas fa-search fa-1x" style="margin-right:10px;
+                            font-size: 1.5em; cursor: pointer;"
+                            ></i> 
+                    </button>
+                    <label style="margin-left: 30px;">{{lblEditorialActual}}</label>
+                </div>
+                <mat-checkbox style="margin-bottom: 20px; width: 20%;" color="primary"
+                [(ngModel)]=habilitado >Habilitado</mat-checkbox>
+              </div>
+        </mat-tab>
+        <mat-tab label="ISBN"> 
+            <div fxLayout="row wrap" fxLayoutAlign="start center" style="margin-left: 30px; margin-top:30px;
+                margin-bottom:0px;">
+                <mat-form-field style="margin-top: 0px; margin-bottom: 0px;">
+                    <input matInput placeholder="ISBN" [(ngModel)]=txtISBN
+                    (keydown.enter)="agregarISBN()" autocomplete="off" #txtISBNElement>
+                </mat-form-field>
+                <button mat-raised-button class="btn-agregar" (click)="agregarISBN()"
+                    style="margin-left: 30px; height: 40px;">
+                    <i class="fas fa-arrow-circle-down fa-1x" style="margin-right:10px;
+                        font-size: 1.5em; cursor: pointer;"
+                        ></i> 
+                </button>
+            </div>
+            <div [hidden]="escondeTablaISBN" style="margin-left: 30px; margin-right:30px; margin-bottom:30px;">
+                <table mat-table [dataSource]="dataSourceISBN" style="width: 100%;">
+
+                    <!-- Acciones Column -->
+                    <ng-container matColumnDef="accionesISBN">
+                        <th mat-header-cell *matHeaderCellDef style="width: 100px;" [hidden]="paraXLS">
+                            Acciones
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                                <i class="fas fa-trash-alt fa-1x" (click)="eliminarISBN(element.ISBN)" style="width: 20px; margin-left:10px; 
+                                color: #bc0325; font-size: 1.4em; cursor: pointer"
+                                mat-raised-button
+                                matTooltip="Eliminar libro {{element.ISBN}}"
+                                matTooltipPosition="right"
+                                matTooltipClass="tooltip-red"></i>
+                        </td>
+                    </ng-container>
+                
+                    <!-- Columna titulo -->
+                    <ng-container matColumnDef="ISBN" style="width: 100;">
+                    <th mat-header-cell *matHeaderCellDef
+                        style="width: 100;"> ISBN </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ISBN}} </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsISBN"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsISBN;"
+                    (click)="seleccionarFila(row)"
+                    style="cursor: pointer;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" #paginadorISBN showFirstLastButtons></mat-paginator>                
+            </div>
+            <div style="margin-left: 5%; margin-right: 5%; padding: 10px; background-color: #ffffff;
+                text-align: center;"
+            [hidden]="!escondeTablaISBN">
+                <h4 style="color: #a31611;">Todavía no se agregó ningún ISBN para este libro</h4>
+            </div>
+        </mat-tab>
+        <mat-tab label="Autor/es"> 
+            Content 3 
+        </mat-tab>
+      </mat-tab-group>
+</div>
+<div style="text-align: center; margin-top: 20px;">
+    <button mat-raised-button class="btn-agregar" (click)="volver()">
+        <i class="fas fa-arrow-circle-left fa-1x" style="width: 20px; margin-right:10px;
+            font-size: 1.5em; cursor: pointer;"
+            ></i>
+        Volver
+    </button>
+    <button mat-raised-button class="btn-agregar" (click)="almacenar()"
+      style="margin-left: 30px;">
+        <i class="fas fa-save fa-1x" style="width: 20px; margin-right:10px;
+            font-size: 1.5em; cursor: pointer;"
+            ></i>
+        Almacenar
+    </button>
+</div>

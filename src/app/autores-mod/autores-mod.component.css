@@ -1,0 +1,14 @@
+.mod-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2.5%;
+  }
+  
+ .mod-container > * {
+    width: 95%;
+  }
+
+.btn-agregar{
+    background-color: #3e8450;
+    color: white;
+}
